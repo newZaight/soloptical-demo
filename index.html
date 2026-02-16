@@ -815,19 +815,20 @@
       }
 
       // Efecto de texto por palabras
-      const splitTargets = $$("[data-split]");
+      const splitTargets = [...document.querySelectorAll("[data-split]")];
       splitTargets.forEach(el => {
-        const text = el.textContent.trim().replace(/\s+/g, " ");
+        const text = el.textContent.replace(/\s+/g, " ").trim();
         const words = text.split(" ");
         el.textContent = "";
         words.forEach((w, i) => {
           const span = document.createElement("span");
           span.className = "word";
           span.style.setProperty("--wd", i);
-          span.textContent = w + (i < words.length - 1 ? " " : "");
+          span.textContent = i < words.length - 1 ? w + " " : w; // <- espacio real
           el.appendChild(span);
         });
       });
+      
 
       // Reveal al entrar/salir (repetible)
       const revealEls = $$(".reveal");
