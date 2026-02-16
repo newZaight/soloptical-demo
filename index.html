@@ -459,6 +459,7 @@
 
     [data-split] .word{
       display:inline-block;
+      white-space:pre;
       opacity:0;
       transform:translateY(18px);
       filter:blur(2px);
@@ -466,6 +467,7 @@
       transition-delay:calc(var(--wd, 0) * 45ms);
       will-change:transform,opacity;
     }
+
     .reveal.in-view [data-split] .word{
       opacity:1;transform:none;filter:none;
     }
