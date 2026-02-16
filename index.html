@@ -490,16 +490,59 @@
   </footer>
 
   <script>
+    // Menú móvil
     const toggle = document.getElementById('mobileToggle');
     const menu = document.getElementById('menu');
-
+  
     toggle.addEventListener('click', () => {
       menu.classList.toggle('open');
     });
-
+  
     document.querySelectorAll('.menu a').forEach(a => {
       a.addEventListener('click', () => menu.classList.remove('open'));
     });
+  
+    // Contadores animados
+    const counters = document.querySelectorAll('.counter');
+  
+    function animateCounter(el) {
+      const target = Number(el.dataset.target || 0);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const start = performance.now();
+  
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        const value = Math.floor(target * eased);
+  
+        el.textContent = value.toLocaleString('es-ES') + suffix;
+  
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target.toLocaleString('es-ES') + suffix;
+        }
+      }
+  
+      requestAnimationFrame(update);
+    }
+  
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          if (!el.dataset.animated) {
+            el.dataset.animated = 'true';
+            animateCounter(el);
+          }
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.45 });
+  
+    counters.forEach(c => observer.observe(c));
   </script>
+
 </body>
 </html>
