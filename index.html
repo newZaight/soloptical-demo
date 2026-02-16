@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FisioNova | Fisioterapia y Osteopatía</title>
+  <meta name="description" content="Clínica de fisioterapia y osteopatía con enfoque integral, tecnología avanzada y trato humano." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f4f7f9;
+      --surface:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --primary:#08b5d6;
+      --primary-2:#0ea5b7;
+      --dark:#0b1324;
+      --radius:18px;
+      --shadow:0 12px 28px rgba(2, 8, 23, .08);
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.55;
+    }
+
+    .container{width:min(var(--max), 92%); margin-inline:auto}
+
+    /* Topbar */
+    .topbar{
+      background:#0a1020;
+      color:#dbe6f2;
+      font-size:.86rem;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      display:flex; gap:16px; flex-wrap:wrap;
+      justify-content:space-between; align-items:center;
+      padding:.5rem 0;
+    }
+    .topbar .left, .topbar .right{
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+    }
+
+    /* Header */
+    .header{
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter: blur(10px);
+      background:rgba(255,255,255,.88);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      height:74px;
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+    .logo{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; text-decoration:none; color:var(--text); letter-spacing:.2px;
+    }
+    .logo-mark{
+      width:34px; height:34px; border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),#5eead4);
+      box-shadow:0 8px 18px rgba(8,181,214,.35);
+    }
+    .menu{
+      display:flex; align-items:center; gap:22px;
+    }
+    .menu a{
+      text-decoration:none; color:#1e293b; font-weight:600; font-size:.95rem;
+    }
+    .menu a:hover{color:var(--primary-2)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      border:none; border-radius:12px; padding:.72rem 1.1rem;
+      font-weight:700; text-decoration:none; cursor:pointer;
+      transition:.2s transform ease, .2s box-shadow ease, .2s background ease;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:white; box-shadow:0 10px 20px rgba(8,181,214,.28);
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-outline{
+      background:#fff; color:#0f172a; border:1px solid #cbd5e1;
+    }
+
+    .mobile-toggle{
+      display:none; background:none; border:none; cursor:pointer;
+      width:42px; height:42px; border-radius:10px;
+    }
+    .mobile-toggle span{
+      display:block; height:2px; background:#0f172a; margin:7px 0;
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      background:
+        radial-gradient(1000px 500px at 80% -10%, rgba(8,181,214,.25), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, #f4f8fb 80%);
+      overflow:hidden;
+    }
+    .hero .content{
+      display:grid; grid-template-columns: 1.1fr .9fr;
+      gap:30px; align-items:center;
+      min-height:620px; padding:54px 0 80px;
+    }
+    .eyebrow{
+      display:inline-block; margin-bottom:16px;
+      font-size:.77rem; font-weight:800; letter-spacing:.12em;
+      color:#0369a1; text-transform:uppercase;
+      background:#e0f2fe; border:1px solid #bae6fd;
+      padding:.42rem .62rem; border-radius:999px;
+    }
+    .hero h1{
+      font-size:clamp(2rem,5vw,3.6rem);
+      line-height:1.06; margin:0 0 14px; letter-spacing:-.02em;
+    }
+    .hero p{
+      margin:0 0 28px; color:var(--muted); font-size:1.04rem; max-width:62ch;
+    }
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap}
+    .hero-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+    .hero-card img{
+      width:100%; height:420px; object-fit:cover; border-radius:14px;
+      display:block;
+    }
+
+    /* Generic sections */
+    section{padding:82px 0}
+    .sec-head{
+      margin-bottom:28px;
+    }
+    .sec-tag{
+      font-size:.78rem; font-weight:800; letter-spacing:.12em;
+      text-transform:uppercase; color:#0c4a6e;
+      margin-bottom:8px;
+    }
+    .sec-title{
+      font-size:clamp(1.6rem,3vw,2.3rem); margin:.15rem 0 .45rem;
+      line-height:1.14; letter-spacing:-.01em;
+    }
+    .sec-desc{color:var(--muted); margin:0; max-width:78ch}
+
+    /* 3 value cards */
+    .grid-3{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    }
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:16px;
+      padding:22px; box-shadow:0 8px 18px rgba(15,23,42,.05);
+    }
+    .card h3{margin:.1rem 0 .45rem; font-size:1.08rem}
+    .card p{margin:0 0 12px; color:var(--muted)}
+    .card a{
+      color:#0369a1; text-decoration:none; font-weight:700; font-size:.95rem;
+    }
+
+    /* Image + text blocks */
+    .split{
+      display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center;
+    }
+    .image{
+      border-radius:18px; overflow:hidden; border:1px solid var(--line); background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .image img{
+      width:100%; height:100%; min-height:340px; object-fit:cover; display:block;
+    }
+    .panel{
+      background:#fff; border:1px solid var(--line); border-radius:18px;
+      padding:28px; box-shadow:var(--shadow);
+    }
+
+    /* Specialty cards with image */
+    .specialties{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    }
+    .sp-card{
+      background:#fff; border:1px solid var(--line); border-radius:16px;
+      overflow:hidden; box-shadow:0 8px 16px rgba(2,8,23,.06);
+    }
+    .sp-card img{
+      width:100%; height:210px; object-fit:cover; display:block;
+    }
+    .sp-card .body{padding:16px 16px 18px}
+    .sp-card h4{margin:.1rem 0 .35rem}
+    .sp-card p{margin:0; color:var(--muted); font-size:.95rem}
+
+    /* Team + stats */
+    .team-wrap{
+      display:grid; grid-template-columns:1.05fr .95fr; gap:24px; align-items:stretch;
+    }
+    .stats{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px;
+    }
+    .stat{
+      background:#ecfeff; border:1px solid #bae6fd; border-radius:14px; padding:14px;
+      text-align:center;
+    }
+    .stat .n{
+      font-size:1.45rem; font-weight:800; color:#0c4a6e;
+      line-height:1;
+    }
+    .stat .l{
+      margin-top:6px; font-size:.9rem; color:#0f172a;
+    }
+
+    /* CTA strip */
+    .cta{
+      border-radius:20px;
+      background:linear-gradient(140deg, #0b1324, #0f1e3d 45%, #0a4864 100%);
+      color:#e6f7ff;
+      padding:34px 26px;
+      display:flex; gap:20px; justify-content:space-between; align-items:center; flex-wrap:wrap;
+      box-shadow:0 18px 36px rgba(2, 8, 23, .25);
+    }
+    .cta h3{margin:0 0 .3rem; font-size:1.45rem}
+    .cta p{margin:0; color:#c7d9e9}
+
+    /* Footer */
+    footer{
+      margin-top:76px;
+      background:#0a1020; color:#b7c4d4;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .footer-grid{
+      display:grid; grid-template-columns:1.2fr .8fr .8fr; gap:22px;
+      padding:40px 0 22px;
+    }
+    .footer-title{color:#eef5ff; margin:0 0 12px}
+    footer a{color:#d4e8ff; text-decoration:none}
+    footer a:hover{text-decoration:underline}
+    .mini{
+      border-top:1px solid rgba(255,255,255,.09);
+      padding:14px 0 20px;
+      font-size:.88rem;
+      color:#93a4b8;
+      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .content, .split, .team-wrap{grid-template-columns:1fr}
+      .hero-card img{height:340px}
+      .grid-3, .specialties{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 760px){
+      .menu{
+        position:fixed; inset:74px 0 auto 0;
+        background:#fff; border-bottom:1px solid var(--line);
+        padding:14px 4%; display:none; flex-direction:column; align-items:flex-start;
+      }
+      .menu.open{display:flex}
+      .mobile-toggle{display:block}
+      .menu .btn-primary{width:100%}
+      .grid-3, .specialties, .stats, .footer-grid{grid-template-columns:1fr}
+      .hero .content{min-height:auto; padding:40px 0 60px}
+      .cta{padding:24px 20px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container inner">
+      <div class="left">
+        <span>664 55 45 35</span>
+        <span>636 88 85 07</span>
+        <span>info@tuclinica.com</span>
+      </div>
+      <div class="right">
+        <span>Lun - Vie: 09:00 - 18:00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a href="#inicio" class="logo">
+        <span class="logo-mark"></span>
+        <span>FisioNova</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="menu">
+        <a href="#inicio">Home</a>
+        <a href="#clinicas">Clínicas</a>
+        <a href="#especializaciones">Especializaciones</a>
+        <a href="#tecnologia">Tecnología</a>
+        <a href="#contacto" class="btn btn-primary">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container content">
+      <div>
+        <span class="eyebrow">Bienestar con base científica</span>
+        <h1>Tu cuerpo habla,<br>nosotros lo escuchamos</h1>
+        <p>
+          En FisioNova entendemos la salud como un todo. Combinamos fisioterapia avanzada,
+          osteopatía estructural y un enfoque personalizado para tratar personas, no solo síntomas.
+        </p>
+        <div class="hero-cta">
+          <a href="#especializaciones" class="btn btn-primary">Ver especialidades</a>
+          <a href="#contacto" class="btn btn-outline">Pedir cita</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img
+          src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1400&auto=format&fit=crop"
+          alt="Profesional sanitario en clínica">
+      </div>
+    </div>
+  </section>
+
+  <!-- Value cards -->
+  <section id="clinicas">
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-tag">Abordamos tu salud desde una visión global</div>
+        <h2 class="sec-title">Salud integral con rigor profesional</h2>
+        <p class="sec-desc">
+          Diagnóstico preciso, aparatología de vanguardia y tratamiento adaptado a cada paciente.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Tecnología que marca la diferencia</h3>
+          <p>Ecografía, EPI y ondas de choque para tratamientos más eficaces.</p>
+          <a href="#tecnologia">Ver tecnología</a>
+        </article>
+        <article class="card">
+          <h3>Especialidades adaptadas a ti</h3>
+          <p>Lesión deportiva, suelo pélvico, neurología, pediatría y más.</p>
+          <a href="#especializaciones">Ver especialidades</a>
+        </article>
+        <article class="card">
+          <h3>Un equipo que te acompaña</h3>
+          <p>Evaluación clínica y plan de tratamiento con seguimiento real.</p>
+          <a href="#equipo">Ver profesionales</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tecnología -->
+  <section id="tecnologia">
+    <div class="container split">
+      <div class="panel">
+        <div class="sec-tag">Confianza basada en ciencia y precisión</div>
+        <h2 class="sec-title">La última tecnología al servicio del tratamiento</h2>
+        <p class="sec-desc">
+          Integramos experiencia clínica con herramientas de diagnóstico para acelerar recuperación,
+          reducir dolor y medir progreso con datos objetivos.
+        </p>
+        <br>
+        <a href="#contacto" class="btn btn-primary">Quiero valoración</a>
+      </div>
+      <figure class="image">
+        <img
+          src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1400&auto=format&fit=crop"
+          alt="Tecnología clínica avanzada">
+      </figure>
+    </div>
+  </section>
+
+  <!-- Especialidades -->
+  <section id="especializaciones">
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-tag">Descubre todo lo que podemos hacer por tu salud</div>
+        <h2 class="sec-title">Especialidades integradas para un tratamiento completo</h2>
+        <p class="sec-desc">
+          Desde recuperación deportiva hasta salud digestiva o neurológica, con un enfoque 100% personalizado.
+        </p>
+      </div>
+
+      <div class="specialties">
+        <article class="sp-card">
+          <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=1200&auto=format&fit=crop" alt="Fisioterapia deportiva">
+          <div class="body">
+            <h4>Fisioterapia deportiva</h4>
+            <p>Prevención y tratamiento de lesiones musculares y articulares.</p>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=1200&auto=format&fit=crop" alt="Osteopatía estructural">
+          <div class="body">
+            <h4>Osteopatía estructural</h4>
+            <p>Mejora de movilidad, alivio de dolor y equilibrio postural.</p>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop" alt="Neurología y rehabilitación">
+          <div class="body">
+            <h4>Neurología y rehabilitación</h4>
+            <p>Intervención funcional centrada en objetivos del paciente.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section id="equipo">
+    <div class="container team-wrap">
+      <figure class="image">
+        <img src="https://images.unsplash.com/photo-1579684385127-7a1c6f6c4f80?q=80&w=1400&auto=format&fit=crop" alt="Equipo clínico">
+      </figure>
+
+      <div class="panel">
+        <div class="sec-tag">Conoce nuestra clínica y equipo humano</div>
+        <h2 class="sec-title">Una red de salud integral con sedes en varias ciudades</h2>
+        <p class="sec-desc">
+          Cada tratamiento empieza con una mirada global al bienestar del paciente.
+          Cercanía, evidencia clínica y acompañamiento en todo el proceso.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="n">12+</div>
+            <div class="l">Años de experiencia</div>
+          </div>
+          <div class="stat">
+            <div class="n">4.500+</div>
+            <div class="l">Pacientes atendidos</div>
+          </div>
+          <div class="stat">
+            <div class="n">18+</div>
+            <div class="l">Especialidades clínicas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container cta">
+      <div>
+        <h3>El tratamiento que necesitas, planteado desde la raíz</h3>
+        <p>Diagnóstico completo, plan personalizado y seguimiento experto.</p>
+      </div>
+      <a href="#contacto" class="btn btn-primary">Solicitar cita</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <div class="container footer-grid">
+      <div>
+        <h4 class="footer-title">FisioNova</h4>
+        <p>
+          Expertos en fisioterapia avanzada, osteopatía y tratamiento integral.
+          Tecnología de última generación y enfoque humano.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Secciones</h4>
+        <p><a href="#clinicas">Clínicas</a></p>
+        <p><a href="#especializaciones">Especializaciones</a></p>
+        <p><a href="#tecnologia">Tecnología</a></p>
+      </div>
+      <div>
+        <h4 class="footer-title">Legal</h4>
+        <p><a href="#">Política de privacidad</a></p>
+        <p><a href="#">Aviso legal</a></p>
+        <p><a href="#">Política de cookies</a></p>
+      </div>
+    </div>
+    <div class="container mini">
+      <span>© 2026 FisioNova</span>
+      <span>Diseño web para clínicas</span>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('mobileToggle');
+    const menu = document.getElementById('menu');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.menu a').forEach(a => {
+      a.addEventListener('click', () => menu.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
