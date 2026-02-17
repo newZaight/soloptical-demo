@@ -850,6 +850,35 @@
         gap:.25rem;
       }
     }
+    @media (max-width:760px){
+      /* Ubicación en una sola columna */
+      #ubicacion .split{
+        grid-template-columns:1fr;
+        gap:.85rem;
+      }
+    
+      /* Mapa con altura controlada en móvil */
+      #ubicacion .map,
+      #ubicacion .map iframe{
+        min-height:320px;
+        height:320px;
+      }
+    
+      /* Un poco más de aire en la tarjeta */
+      #ubicacion .panel{
+        padding:1rem;
+      }
+    
+      /* Horario más legible */
+      #ubicacion .hours td{
+        padding:.62rem .2rem;
+      }
+    
+      /* Botones cómodos en móvil */
+      #ubicacion .btn-row .btn{
+        width:100%;
+      }
+    }
   </style>
 </head>
 <body>
