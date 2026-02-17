@@ -830,7 +830,26 @@
       .service-row.reverse .service-media,.service-row.reverse .service-copy{order:initial;}
       .service-media,.service-copy{min-height:300px;}
     }
-
+    @media (max-width:760px){
+      .foot{
+        grid-template-columns:1fr;   /* antes: 1fr auto */
+        gap:.55rem;
+        align-items:start;
+      }
+    
+      .legal{
+        justify-content:flex-start;
+        gap:.5rem .9rem;
+      }
+    }
+    
+    @media (max-width:420px){
+      .legal{
+        flex-direction:column;       /* evita que se amontonen en una línea */
+        align-items:flex-start;
+        gap:.25rem;
+      }
+    }
   </style>
 </head>
 <body>
